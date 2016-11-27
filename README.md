@@ -6,8 +6,9 @@ Template to write powershell scripts
 This script is released under the MIT license. See the License file for more details
 
 ### CHANGE LOG
-|build|branch |  Change |
+| build| branch |  Change |
 |---|---|---|
+|0.2| Master | First version |
 |0.1| develop/v0.1| Initial code|
 |0.0| Master| Initial release|
 
