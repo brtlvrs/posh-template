@@ -1,6 +1,14 @@
-# TSP-VDL
+# FUNCTIONS
 
-Scripts for implementation, maintenance and 2-day ops.
+The functions folder contains custom powershell functions used by scripts  
+in the parent folder.  
+The functions are loaded via the functions.psm1 module.
+
+To import functions add the following code  to the begin {} block of the script.
+```powershell
+#-- load custom functions
+import-module $scriptpath\functions\functions.psm1 -DisableNameChecking -Force:$true  
+```
 
 ## DISCLAIMER
 

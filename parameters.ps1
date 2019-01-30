@@ -4,55 +4,6 @@
     Last Edit          : <Initials> - <date>
 #>
 
-#region Custom Type definitions
-
-#-- Type definitions needed for syslog function
-Add-Type -TypeDefinition @"
-       public enum Syslog_Facility
-       {
-               kern,
-               user,
-               mail,
-               system,
-               security,
-               syslog,
-               lpr,
-               news,
-               uucp,
-               clock,
-               authpriv,
-               ftp,
-               ntp,
-               logaudit,
-               logalert,
-               cron,
-               local0,
-               local1,
-               local2,
-               local3,
-               local4,
-               local5,
-               local6,
-               local7,
-       }
-"@
- 
-Add-Type -TypeDefinition @"
-       public enum Syslog_Severity
-       {
-               Emergency,
-               Alert,
-               Critical,
-               Error,
-               Warning,
-               Notice,
-               Informational,
-               Debug
-          }
-"@
-#endregion
-
-
 @{
     #-- default script parameters
         LogPath="D:\beheer\logs"
