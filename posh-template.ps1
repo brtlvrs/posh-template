@@ -20,7 +20,6 @@
 Param(
     #-- Define Powershell input parameters (optional)
     [string]$text
-
 )
 
 Begin{
