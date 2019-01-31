@@ -7,11 +7,12 @@ Code to add to the begin{} block of a script
 
 write-verbose "Loading script functions."
 # Gather all files
-if (!(Test-Path -Path ($scriptpath.fullname+"\functions"))) {
+$scriptPath=(get-item (Split-Path -Path $MyInvocation.MyCommand.Definition)).FullName
+if (!(Test-Path -Path ($scriptpath))) {
     write-Error "Couldn't reach functions folder during loading of module."
     exit
 }
-$FunctionFiles  = @(Get-ChildItem -Path ($scriptpath.fullname+"\functions") -Filter *.ps1 -ErrorAction SilentlyContinue -Recurse)
+$FunctionFiles  = @(Get-ChildItem -Path ($scriptpath) -Filter *.ps1 -ErrorAction SilentlyContinue -Recurse)
 
 #-- list current functions
 $currentFunctions = Get-ChildItem function:
