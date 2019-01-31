@@ -5,10 +5,13 @@ function exit-script
         Clean up actions before we exit the script.
     .PARAMETER CleanupCode
         [scriptblock] Unique code to invoke when exiting script.
+    .PARAMETER finished_normal
+        [boolean] To be used in end{} block to notify that script has fully executed.
     #>
     [CmdletBinding()]
     param(
-        [scriptblock]$CleanupCode #-- (optional) extra code to run before exit script.
+        [scriptblock]$CleanupCode, #-- (optional) extra code to run before exit script.
+        [switch]$finished_normal
     )
 
     #-- check why script is called and react apropiatly
@@ -28,14 +31,14 @@ function exit-script
         }
 
     }
-    if ($ts_start) {
+    if ($global:ts_start) {
         #-- Output runtime and say greetings
         $ts_end=get-date
         $msg="Runtime script: {0:hh}:{0:mm}:{0:ss}" -f ($ts_end- $ts_start)  
-        write-host $msg
+        if ($log) {$log.verbose($msg)} else {Write-host $msg}
     } else {
         write-warning "No ts_start variable found, cannot calculate runtime."
     }
-    read-host "The End <press Enter to close window>."
+    #read-host "The End <press Enter to close window>."
     exit
 }
