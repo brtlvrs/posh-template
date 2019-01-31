@@ -23,17 +23,16 @@ Param(
 )
 
 Begin{
+    $ts_start=get-date #-- note start time of script
     #-- initialize environment
     $DebugPreference="SilentlyContinue"
-    $VerbosePreference="SilentlyContinue"
+    $VerbosePreference="Continue"
     $ErrorActionPreference="Continue"
     $WarningPreference="Continue"
     clear-host #-- clear CLi
-    $ts_start=get-date #-- note start time of script
-    if ($finished_normal) {Remove-Variable -Name finished_normal -Confirm:$false }
 
 	#-- determine script location and name
-	$scriptpath=get-item (Split-Path -parent $MyInvocation.MyCommand.Definition)
+    $scriptPath=(get-item (Split-Path -Path $MyInvocation.MyCommand.Definition)).FullName
     $scriptname=(Split-Path -Leaf $MyInvocation.mycommand.path).Split(".")[0]
     
     #-- Load Parameterfile
@@ -44,11 +43,12 @@ Begin{
     $P = & $scriptpath\parameters.ps1
 
     #-- load functions
-    if (!(Test-Path -Path $scriptpath\functions\functions.psm1 -IsValid)) {
-        write-warning "No PS function files found, running script."
+    if (Test-Path -IsValid -Path($scriptpath+"\functions\functions.psm1") ) {
+        write-host "Loading functions" -ForegroundColor cyan
+        import-module ($scriptpath+"\functions\functions.psm1") -DisableNameChecking -Force:$true  #-- the module scans the functions subfolder and loads them as functions
     } else {
-        #-- the module scans the functions subfolder and loads them as functions
-        import-module $scriptpath\functions\functions.psm1 -DisableNameChecking -Force:$true   
+        write-verbose "functions module not found."
+        exit-script
     }
     
 #region for Private script functions
@@ -57,13 +57,13 @@ Begin{
 #endregion
 }
 
+End{
+    #-- we made it, exit script.
+    exit-script -finished_normal
+}
+
 Process{
 #-- note: area to write script code.....
     write-host "hello world"
 }
 
-End{
-    #-- we made it, exit script.
-    $finished_normal=$true
-    exit-script
-}
