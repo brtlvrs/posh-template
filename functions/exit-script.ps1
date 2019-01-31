@@ -35,7 +35,7 @@ function exit-script
         #-- Output runtime and say greetings
         $ts_end=get-date
         $msg="Runtime script: {0:hh}:{0:mm}:{0:ss}" -f ($ts_end- $ts_start)  
-        if ($log) {$log.verbose($msg)} else {Write-host $msg}
+        if ($log) {$log.verbose($msg)} else {Write-host $msg -ForegroundColor cyan}
     } else {
         write-warning "No ts_start variable found, cannot calculate runtime."
     }
