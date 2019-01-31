@@ -17,3 +17,13 @@ import-module $scriptpath\functions\functions.psm1 -DisableNameChecking -Force:$
     In no event shall the authors or copyright holders be liable for any claim, damages or other liability,
     whether in an action of contract, tort or otherwise, arising from, 
     out of or in connection with the software or the use or other dealings in the software.
+
+## Functions
+
+| Function | Synopsys |
+|---|---|
+|connect-vSphere| Wrapper for connect-viserver (PowerCLI)  assuming that credentials are already known. And checking of there is already a session to vCenter.
+|exit-script| Script to call on exit of script or on checks in statements. exit-script will log the execution time of the script and if the script completed succesfully or not. It is also possible to add code that should be run on exit.|
+|invoke-vmHostSSH| Wrapper to execute commands via SSH on a ESXi Host.|
+|remove-agedItems|Removing items in a folder older then a given age.|
+|send-syslogmessage|cmdlet to send syslog messages to a syslog server.|
