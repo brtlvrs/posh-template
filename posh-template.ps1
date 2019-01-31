@@ -45,7 +45,7 @@ Begin{
     #-- load functions
     if (Test-Path -IsValid -Path($scriptpath+"\functions\functions.psm1") ) {
         write-host "Loading functions" -ForegroundColor cyan
-        import-module ($scriptpath+"\functions\functions.psm1") -DisableNameChecking -Force:$true  #-- the module scans the functions subfolder and loads them as functions
+        import-module ($scriptpath+"\functions\functions.psm1") -DisableNameChecking -Force:$true #-- the module scans the functions subfolder and loads them as functions
     } else {
         write-verbose "functions module not found."
         exit-script
