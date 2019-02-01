@@ -9,7 +9,7 @@
 .NOTES
     Files needed:
         - parameters.ps1
-        - CSV file provided in pramaters.ps1 file
+        - CSV file provided in parameters.ps1 file
 
     *** DISCLAIMER ***
 
