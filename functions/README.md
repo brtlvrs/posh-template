@@ -20,10 +20,18 @@ import-module $scriptpath\functions\functions.psm1 -DisableNameChecking -Force:$
 
 ## Functions
 
-| Function | Synopsys |
-|---|---|
-|connect-vSphere| Wrapper for connect-viserver (PowerCLI)  assuming that credentials are already known. And checking of there is already a session to vCenter.
-|exit-script| Script to call on exit of script or on checks in statements. exit-script will log the execution time of the script and if the script completed succesfully or not. It is also possible to add code that should be run on exit.|
-|invoke-vmHostSSH| Wrapper to execute commands via SSH on a ESXi Host.|
-|remove-agedItems|Removing items in a folder older then a given age.|
-|send-syslogmessage|cmdlet to send syslog messages to a syslog server.|
+| Function | Folder | Synopsys |
+|---|---|---|
+|connect-vSphere| VMware |Wrapper for connect-viserver (PowerCLI)  assuming that credentials are already known. And checking of there is already a session to vCenter.
+|exit-script|  | Script to call on exit of script or on checks in statements. exit-script will log the execution time of the script and if the script completed succesfully or not. It is also possible to add code that should be run on exit.|
+|invoke-vmHostSSH| VMware | Wrapper to execute commands via SSH on a ESXi Host.|
+|remove-agedItems|  | Removing items in a folder older then a given age.|
+|send-syslogmessage|  | cmdlet to send syslog messages to a syslog server.|
+|set-emailAlarmActions| VMware| Set email addresses on Alarm actions |
+
+### set-emailAlarmActions
+
+Function to configure vCenter Alarm definitions with the following options.
+- e-mail addresses
+- repeating action
+- disable / enable alarm
